@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">StickyHeaderRecyclerView</string>
+    <string name="header">HEADER ELEMENT</string>
+    <string name="data_element">DATA ELEMENT</string>
+</resources>
