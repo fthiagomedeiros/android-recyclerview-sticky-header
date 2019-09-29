@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.fthiago.stickyheaderrecyclerview.domain.ChildItem
 import com.fthiago.stickyheaderrecyclerview.adapter.DataAdapter
+import com.fthiago.stickyheaderrecyclerview.adapter.StickHeaderItemDecoration
+import com.fthiago.stickyheaderrecyclerview.adapter.StickyHeaderInterface
 import com.fthiago.stickyheaderrecyclerview.domain.DataElement
 import com.fthiago.stickyheaderrecyclerview.domain.HeaderItem
 import kotlinx.android.synthetic.main.activity_main.*
@@ -23,12 +25,16 @@ class MainActivity : AppCompatActivity() {
 
     private fun setRecyclerView() {
         mRecylerView = data_recycler_view
+
+        mAdapter = DataAdapter(setElements())
+        mRecylerView.adapter = mAdapter
+
         val layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         mRecylerView.layoutManager = layoutManager
 
-        mAdapter = DataAdapter(setElements())
-        mRecylerView.adapter = mAdapter
+        mRecylerView.addItemDecoration(StickHeaderItemDecoration(mAdapter))
+
     }
 
     private fun setElements(): ArrayList<DataElement> {
